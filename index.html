@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myFirstApp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirstApp</title>
+    <title>Check if Too Much!</title>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
-    <div ng-controller="MyFirstController"></div>
+<body ng-app="LunchCheck">
+    <h1>Check if Too Much</h1>
+    <div ng-controller="LunchCheckController">
+        <div>
+            <p>Your Lunch:</p>
+            <input type="text" ng-model="lunch" ng-class="{'tb-red' : result === 'Please enter data first.', 'tb-green' : result === 'Too Much!' || result === 'Enjoy!'}">
+            <button type="button" ng-click="displayResult();">Check If Too Much</button>
+        </div>
+        <div>
+            <p ng-class="{'color-red': result === 'Please enter data first.', 'color-green' : result === 'Too Much!' || result === 'Enjoy!'}">{{result}}</p>
+        </div>
+    </div>
 </body>
 </html>
